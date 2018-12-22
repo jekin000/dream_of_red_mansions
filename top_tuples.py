@@ -42,8 +42,14 @@ def parse(seg,fname):
 def write_to_file(fname,data,src_fname):
 	with open(fname,'a') as f:
 		f.write('top 100 two-tuple  in {}:\n'.format(src_fname))
+		f.write('No.\tTwo-Tuple\t\tCount\n')
+		f.write('-----------------------------------\n')
 		for i in range(0,100):
-			f.write('No.{}\t{},\t{}\n'.format(i+1,str(data[i][0]),data[i][1]))
+			if len(str(data[i][0])) < 12:
+				f.write('{}\t{},\t\t{}\n'.format(i+1,str(data[i][0]),data[i][1]))
+			else:
+				f.write('{}\t{},\t{}\n'.format(i+1,str(data[i][0]),data[i][1]))
+		f.write('\n')
 
 def parse_and_write(seg,orifname,dstfname):
 	data = parse(seg,orifname)
