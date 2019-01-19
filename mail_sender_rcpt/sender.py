@@ -16,5 +16,9 @@ if __name__ == '__main__':
 		content = f.read()
 
 	formated = json.loads(content)
-	data = generate_send_count(formated)
-	print len(data)
+	senders = generate_send_count(formated)
+	
+	#sorted_senders = [(k,senders[k]) for k in sorted(senders.keys())]
+	with open('senders.txt','w') as f:
+		f.write(json.dumps(senders))
+		

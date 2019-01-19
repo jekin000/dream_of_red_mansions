@@ -13,10 +13,12 @@ def parse_mail_indexes(filename):
 	return begin_indexs,contents
 		
 def extract_owner(string):
+	'''
 	p = re.compile(r'<.*>')
 	res = p.search(string)
 	if res is None:
 		return None
+	'''
 	s = re.sub('<.*>|\\\"|,|=[0-9]*','',string)
 	s1 = re.sub('\\[.*?\\]','',s)
 	s2 = re.sub(' +',' ',s1)
